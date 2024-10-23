@@ -2,25 +2,39 @@
 // 멤버 함수 == 메소드
 
 class Employee {
-  empName: string;
-  age: number;
-  empJob: string;
+  //   private _empName: string;
+  //   private _age: number;
+  //   private _empJob: string;
+
+  constructor(
+    private _empName: string,
+    private _age: number,
+    private _empJob: string
+  ) {}
+
+  // get/set => 데이터 직접 접근X, 특정 메소드를 통해 접근
+  get empName() {
+    return this._empName;
+  }
+
+  set empName(val: string) {
+    this._empName = val;
+  }
 
   printEmp = (): void => {
     console.log(
-      this.empName +
+      this._empName +
         "의 나이는 " +
-        this.age +
+        this._age +
         "이고, 직업은 " +
-        this.empJob +
+        this._empJob +
         "입니다."
     );
   };
 }
 
-let employee1 = new Employee();
-employee1.empName = "kim";
-employee1.age = 20;
-employee1.empJob = "개발자";
+// public private protected => 데이터 접근 제한
 
+let employee1 = new Employee("kim", 30, "소프트웨어개발자");
+employee1.empName = "lee";
 employee1.printEmp();
